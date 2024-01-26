@@ -1,0 +1,15 @@
+{
+  "name": "keywordsearch",
+  "version": "1.0.0",
+  "description": "Just for the quick search by the key words. Maybe I want to write my own algorithm to seacrh in the languange JavaScript...",
+  "main": "app.js",
+  "scripts": {
+    "test": "node app.js",
+    "start": "node app.js"
+  },
+  "author": "Chang-Mao Yang",
+  "license": "ISC",
+  "dependencies": {
+    "express": "^4.18.2"
+  }
+}
