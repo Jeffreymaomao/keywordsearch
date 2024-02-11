@@ -87,8 +87,8 @@
 
 ```python
 mylist=[]
-for filename in os.listdir('path/here/'):
-with open(os.path.join('path/here/', filename), 'r') as f:
+for filename in os.listdir("path/here/"):
+with open(os.path.join("path/here/", filename), "r") as f:
     mylist.append(f.read())
 ```
 
