@@ -7,7 +7,7 @@
     "test": "node app.js",
     "start": "node app.js",
     "dev": "webpack serve --mode development --open",
-    "tree": " tree -I 'node_modules|memo'",
+    "tree": " tree -a -I '.git|node_modules|memo'",
     "build": "webpack --mode production"
   },
   "author": "Chang-Mao Yang",
