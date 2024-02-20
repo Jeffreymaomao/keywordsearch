@@ -5,6 +5,9 @@ const CopyPlugin = require('copy-webpack-plugin');
 
 module.exports = {
     entry: './src/js/main.js',
+    externals: {
+        'window.searcher': 'window.searcher'
+    },
     output: {
         path: path.resolve(__dirname, 'dist'),
         filename: 'bundle.js',
