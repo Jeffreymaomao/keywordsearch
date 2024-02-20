@@ -5,7 +5,10 @@
   "main": "app.js",
   "scripts": {
     "test": "node app.js",
-    "start": "node app.js"
+    "start": "node app.js",
+    "dev": "webpack serve --mode development --open",
+    "tree": " tree -I 'node_modules|memo'",
+    "build": "webpack --mode production"
   },
   "author": "Chang-Mao Yang",
   "license": "ISC",
@@ -13,6 +16,12 @@
     "express": "^4.18.2"
   },
   "devDependencies": {
-    "webpack-cli": "^5.1.4"
+    "copy-webpack-plugin": "^12.0.2",
+    "css-loader": "^6.10.0",
+    "html-webpack-plugin": "^5.6.0",
+    "mini-css-extract-plugin": "^2.8.0",
+    "style-loader": "^3.3.4",
+    "webpack-cli": "^5.1.4",
+    "webpack-dev-server": "^5.0.2"
   }
 }
