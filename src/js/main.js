@@ -1,6 +1,5 @@
 import '../css/normalize.css';
 import '../css/index.css';
-
 import {Searcher} from './Searcher.js';
 
 window.addEventListener("load", (e)=>{

@@ -1,13 +1,11 @@
 const path = require('path');
 const HtmlWebpackPlugin = require('html-webpack-plugin');
+const TerserPlugin = require('terser-webpack-plugin');
 const MiniCssExtractPlugin = require('mini-css-extract-plugin');
 const CopyPlugin = require('copy-webpack-plugin');
 
 module.exports = {
     entry: './src/js/main.js',
-    externals: {
-        'window.searcher': 'window.searcher'
-    },
     output: {
         path: path.resolve(__dirname, 'dist'),
         filename: 'bundle.js',
@@ -43,5 +41,15 @@ module.exports = {
         maxAssetSize: 2 * 1024 * 1024, // 最大资产大小（例如，2 MiB）
         maxEntrypointSize: 3 * 1024 * 1024, // 最大入口点大小
         hints: "warning" // "error", "warning", 或 false (禁用)
+    },
+    optimization: {
+        minimize: true,
+        minimizer: [
+            new TerserPlugin({
+                terserOptions: {
+                    keep_classnames: true,  // 保留类名
+                }
+            })
+        ]
     },
 };

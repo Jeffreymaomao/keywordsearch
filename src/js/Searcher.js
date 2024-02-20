@@ -142,5 +142,4 @@ class Searcher {
 		return false;
 	}
 }
-
 export {Searcher};
