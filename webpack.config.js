@@ -8,7 +8,7 @@ module.exports = {
     entry: './src/js/main.js',
     output: {
         path: path.resolve(__dirname, 'dist'),
-        filename: 'bundle.js',
+        filename: 'Searcher.js',
     },
     module: {
         rules: [{
@@ -29,7 +29,7 @@ module.exports = {
             filename: 'index.html'
         }),
         new MiniCssExtractPlugin({
-            filename: 'bundle.css',
+            filename: 'Searcher.css',
         }),
         new CopyPlugin({
             patterns: [{
