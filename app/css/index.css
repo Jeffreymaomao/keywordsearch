@@ -6,6 +6,35 @@ html,body{
 	overflow: hidden;
 }
 
+a{
+	text-decoration: none;
+}
+
+mark{
+	/*	
+	#DAA001
+	#772020
+	#58688F
+	#253769
+
+	#F9F6B1
+	#EEDD46
+	#FFCC31
+	#ffde7a
+	#ffeb7a
+	*/
+	background: rgb(255,235,122);
+	background: linear-gradient( 
+		rgba(255,255,255, 0.0) 10%,
+		rgba(255,235,122, 0.5) 20%,
+		rgba(255,235,122, 1.0) 50%,
+		rgba(255,235,122, 1.0) 75%, 
+		rgba(255,235,122, 0.5) 80%, 
+		rgba(255,255,255, 0.0) 95%
+	);
+}
+
+/* ------------------------------ */
 .app{
 	width: 100vw;
 	height: 100vh;
@@ -31,6 +60,7 @@ html,body{
 	transform: translateX(-50%);
 	width: 60%;
 
+	overflow-y: hidden;
 	font-size: 20pt;
 	padding: 5px 2%;
 	border: 0px;
@@ -58,13 +88,41 @@ html,body{
 
 .card{
 	display: block;
-	width: 200px;
 	margin: 8px;
 	border-radius: 10px;
 
 	box-shadow: 0px 0px 5px #ccc;
-	padding: 20px;
 	text-align: center;
+	padding: 5px;
+
+	overflow: hidden;
+}
+
+.card-container{
+	margin: 0;
+	width: 200px;
+/*	height: auto;*/
+	min-height: 50px;
+}
+
+.card-title {
+/*	border: 1px solid red;*/
+	padding: 8px;
+	margin: 0;
+	color: rgba(0, 0, 0, 1.0);
+}
+
+.card-keys {
+	/*position: absolute;
+	bottom: 0;*/
+	width: 100%;
+	padding: 0;
+	margin: 0;
+
+	font-size: 8pt;
+	color: rgba(0, 0, 0, 0.5);
+
+/*	border: 1px solid blue;*/
 }
 
 

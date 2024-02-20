@@ -3,7 +3,7 @@
 // ---
 class Searcher {
 	constructor(config){
-		this.SHOW_NUMBER = 40;
+		this.SHOW_NUM = 40;
 		// ---
 		this.fetch = (...args) => window.fetch(...args);
 		// ---
@@ -31,6 +31,42 @@ class Searcher {
 		this.DOM_cardsContainer = this.createAndAppendElement(this.DOM_container, "div", {
 			class: "cards-container"
 		});
+
+		this.DOM_input.focus();
+	}
+	addMark(text, mark){
+		const regex = new RegExp(mark, 'gi');
+	    text = text.replace(/(<mark>|<\/mark>)/gim, '');
+	    return text.replace(regex, '<mark>$&</mark>');
+	}
+	createCard(parentDOM, item, search=null){
+		const url = item.k.reverse().join("/");
+
+		const card = this.createAndAppendElement(parentDOM, "a", {
+			class: "card",
+			href: "#",
+		});
+
+		const card_container = this.createAndAppendElement(card, "div", {
+			class: "card-container",
+		});
+
+		const title = this.createAndAppendElement(card_container, "h4", {
+			class: "card-title",
+			innerText: `${item.n}`,
+		});
+
+		const keys = this.createAndAppendElement(card_container, "p", {
+			class: "card-keys",
+			innerText: `${url}`,
+		});
+
+		if (search) {
+		    title.innerHTML = this.addMark(title.innerHTML, search);
+		    keys.innerHTML = this.addMark(keys.innerHTML, search);
+		}
+
+		return card;
 	}
 	createAndAppendElement(parent, tag, attributes = {}) {
 	    const element = document.createElement(tag);
@@ -56,12 +92,13 @@ class Searcher {
 			if(response.ok) return response.json();
 		}).then((data)=>{
 			this.database = data;
+			this.TOTAL_NUM = Object.keys(data).length;
 		}).catch((err)=>{
 			console.error(err);
 		});
 	}
 	search(e){
-		const text = e.target.value;
+		const text = e.target.value.trim();
 		if(!text){
 			this.DOM_cardsContainer.innerHTML = "";
 			return;
@@ -72,11 +109,8 @@ class Searcher {
 		var n = 1;
 		for(let item of items){
             if (this.parseKeyword(text, item)) {
-            	this.createAndAppendElement(fragment, "div", {
-					class: "card",
-					innerText: `${item.n} | ${item.k}`,
-				});
-            	if(++n >= this.SHOW_NUMBER) break;
+            	this.createCard(fragment, item, text);
+            	if(++n >= this.SHOW_NUM) break;
             }
         };
 
@@ -90,17 +124,23 @@ class Searcher {
 		}
 	}
 	parseKeyword(inputText, item){
-		const text = inputText.toLowerCase();
+		const texts = inputText.toLowerCase().split(",");
+		const text1 = texts[0];
+		const text2 = texts[1];
+		// --- exist text 2
+		// if(text2){
+		// 	console.log(text2)
+		// }
+		// ---
 		const title = item.n||"";
 		const keys = item.k||[];
-		if(title.toLowerCase().includes(text)) return true;
+		if(title.toLowerCase().includes(text1)) return true;
 		for(let key of keys){
-			if(key.toLowerCase().includes(text)) return true;
+			if(key.toLowerCase().includes(text1)) return true;
 		}
 		return false;
 	}
 }
-
 
 window.addEventListener("load", (e)=>{
 	window.searcher = new Searcher({
