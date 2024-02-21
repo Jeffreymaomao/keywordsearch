@@ -1,11 +1,10 @@
 class Searcher {
 	constructor(DOMparent, config){
 		this.database = config.database||{};
-		this.fetch = (...args) => window.fetch(...args);
+		this.SHOW_NUM = config.SHOW_NUM||40;
+		this.href_key = config.href_key||null;
 		// ---
-		this.SHOW_NUM = 40;
-		this.TOTAL_NUM = Object.keys(this.database).length;
-		// ---
+		this.updateDatabase(this.database)
 		this.initializeDOM(DOMparent);
 		this.createEventListener();
 
@@ -35,6 +34,10 @@ class Searcher {
 
 		this.dom.input.focus();
 	}
+	updateDatabase(database){
+		this.database = database;
+		this.TOTAL_NUM = Object.keys(this.database).length;
+	}
 	addMark(text, mark){
 		const regex = new RegExp(mark, 'gi');
 	    text = text.replace(/(<mark>|<\/mark>)/gim, '');
@@ -42,10 +45,16 @@ class Searcher {
 	}
 	createCard(parentDOM, item, search=null){
 		const url = item.k.reverse().join("/");
+		let link_href;
+		if(!this.href_key){
+			link_href = "#";
+		}else{
+			link_href = item[this.href_key]||"#";
+		}
 
 		const card = this.createAndAppendElement(parentDOM, "a", {
 			class: "card",
-			href: "#",
+			href: link_href,
 		});
 
 		const card_container = this.createAndAppendElement(card, "div", {

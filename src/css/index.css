@@ -2,7 +2,7 @@
 	box-sizing: border-box;
 	position: relative;
 }
-html,body{
+body{
 	overflow: hidden;
 }
 
@@ -37,7 +37,7 @@ mark{
 /* ------------------------------ */
 .app{
 	width: 100vw;
-	height: 100vh;
+	height: auto;
 	overflow-x: hidden;
 	overflow-y: scroll;
 }
