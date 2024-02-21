@@ -7,10 +7,10 @@ const CopyPlugin = require('copy-webpack-plugin');
 module.exports = {
     entry: {
         main: './src/js/main.js',
-        user: './src/index.user.js'
+        searcher: './src/js/Searcher.js'
     },
     output: {
-        filename: '[name].bundle.js',
+        filename: '[name].min.js',
         path: path.resolve(__dirname, 'dist')
     },
     module: {
@@ -32,7 +32,7 @@ module.exports = {
             filename: 'index.html'
         }),
         new MiniCssExtractPlugin({
-            filename: 'Searcher.css',
+            filename: 'searcher.min.css',
         }),
         new CopyPlugin({
             patterns: [{

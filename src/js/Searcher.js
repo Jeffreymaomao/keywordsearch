@@ -1,4 +1,4 @@
-export class Searcher {
+class Searcher {
 	constructor(config){
 		this.databaseURL = config.databaseURL || "./database.json";
 		this.fetch = (...args) => window.fetch(...args);
@@ -142,4 +142,5 @@ export class Searcher {
 		return false;
 	}
 }
-// export {Searcher};
+
+window.Searcher = Searcher;
