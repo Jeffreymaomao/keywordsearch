@@ -5,10 +5,13 @@ const MiniCssExtractPlugin = require('mini-css-extract-plugin');
 const CopyPlugin = require('copy-webpack-plugin');
 
 module.exports = {
-    entry: './src/js/main.js',
+    entry: {
+        main: './src/js/main.js',
+        user: './src/index.user.js'
+    },
     output: {
-        path: path.resolve(__dirname, 'dist'),
-        filename: 'Searcher.js',
+        filename: '[name].bundle.js',
+        path: path.resolve(__dirname, 'dist')
     },
     module: {
         rules: [{
