@@ -44,7 +44,7 @@ class Searcher {
 	    return text.replace(regex, '<mark>$&</mark>');
 	}
 	createCard(parentDOM, item, search=null){
-		const url = item.k.reverse().join("/");
+		const url = item.k.join("/");
 		let link_href;
 		if(!this.href_key){
 			link_href = "#";
