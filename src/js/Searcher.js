@@ -1,25 +1,15 @@
 class Searcher {
-	constructor(config){
-		this.databaseURL = config.databaseURL || "./database.json";
+	constructor(DOMparent, config){
+		this.database = config.database||{};
 		this.fetch = (...args) => window.fetch(...args);
 		// ---
 		this.SHOW_NUM = 40;
+		this.TOTAL_NUM = Object.keys(this.database).length;
 		// ---
-		this.readDatabase(this.databaseURL);
-		this.initializeDOM(config.DOM);
+		this.initializeDOM(DOMparent);
 		this.createEventListener();
 
 		// console.log(`Start time : ${new Date()}`);
-	}
-	readDatabase(url){
-		this.fetch(url).then(response=>{
-			if(response.ok) return response.json();
-		}).then((data)=>{
-			this.database = data;
-			this.TOTAL_NUM = Object.keys(data).length;
-		}).catch((err)=>{
-			console.error(err);
-		});
 	}
 	initializeDOM(parentNode){
 		this.dom = {};
