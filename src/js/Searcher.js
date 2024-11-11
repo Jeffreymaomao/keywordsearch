@@ -117,6 +117,7 @@ class Searcher {
         this.dom.cardsContainer.innerHTML = "";
         this.dom.cardsContainer.appendChild(fragment);
 	}
+	
 	createEventListener(){
 		if(this.dom.input && this.search){
 			this.search = this.search.bind(this);

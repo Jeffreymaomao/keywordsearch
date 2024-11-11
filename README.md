@@ -7,7 +7,7 @@ This is a simple web application that allows users to input keywords for searchi
 1. Enter keywords in the search box.
 2. The application will display results matching the keywords.
 
-Application entry: https://jeffreymaomao.github.io/keywordsearch.github.io/dist
+Application entry: https://jeffreymaomao.github.io/keywordsearch/dist
 
 ## Technology Stack
 
